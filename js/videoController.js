@@ -27,7 +27,6 @@ function loadVideo(localFile) {
   reader.addEventListener("load", function () {
 
     fileURL = reader.result;
-    console.log(fileURL)
 
     let videoContainer = document.getElementById("videoContainer");
 
