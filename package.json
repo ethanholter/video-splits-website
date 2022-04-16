@@ -1,0 +1,31 @@
+{
+  "name": "videosplits",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "startSass": "sass --watch ./scss/styles.scss ./css/styles.css",
+    "buildPackage": "npx electron-packager . --overwrite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ethanholter/Video-Stopwatch.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^17.1.2",
+    "eslint": "^8.13.0"
+  },
+  "bugs": {
+    "url": "https://github.com/ethanholter/Video-Stopwatch/issues"
+  },
+  "homepage": "https://github.com/ethanholter/Video-Stopwatch#readme",
+  "keywords": [],
+  "description": "",
+  "dependencies": {
+    "electron": "^17.1.2",
+    "electron-reload": "^2.0.0-alpha.1"
+  }
+}
