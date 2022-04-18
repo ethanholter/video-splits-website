@@ -42,7 +42,7 @@ function loadVideo(localFile) {
     videoContainer.appendChild(video);
 
     video.addEventListener('loadeddata', () => {
-      sliderMax = Math.round(video.duration) * sliderResolution; //mp4s play at 24 fps
+      let sliderMax = Math.round(video.duration) * sliderResolution; //mp4s play at 24 fps
       slider.setAttribute("max", sliderMax)
       slider.value = 0;
     })
@@ -83,3 +83,5 @@ fileInput.firstElementChild.addEventListener('change', () => {
 fileInput.lastElementChild.addEventListener('click', () => {
   fileInput.firstElementChild.click();
 })
+
+document.getElementById("pausebutton").addEventListener('click', playPause);
