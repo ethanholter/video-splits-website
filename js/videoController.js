@@ -4,12 +4,6 @@ const pausebutton = document.getElementById("pausebutton");
 const fileInput = document.getElementById('fileInput');
 const sliderResolution = 100;
 
-//TODO hardcoded wait load time. need to make this better later
-
-function roundTo(num, numDecimals) {
-  return Math.round(num * (10 ** numDecimals)) / (10 ** numDecimals)
-}
-
 function playPause() {
   if (video == null) return
   if (video.paused) {
@@ -47,11 +41,7 @@ function loadVideo(localFile) {
       slider.value = 0;
     })
 
-    var refreshTimer = setInterval(() => {
-      if (video.paused) return
-      slider.value = video.currentTime * sliderResolution;
-      updateTimeIndicator()
-    }, 50);
+    updateTimeIndicator()
 
     var checkSliderChange = slider.addEventListener('input', function () {
       if (!video.paused) video.pause(); pausebutton.innerHTML = "Play";
@@ -65,7 +55,12 @@ function loadVideo(localFile) {
 }
 
 function updateTimeIndicator() {
-  document.getElementById('timeIndicator').innerHTML = roundTo(video.currentTime, 2)
+  requestAnimationFrame(() => {
+    slider.value = video.currentTime * sliderResolution;
+    document.getElementById('timeIndicator').innerHTML = video.currentTime.toLocaleString(undefined,
+      { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+    updateTimeIndicator()
+  })
 }
 
 function addTime(num) {
