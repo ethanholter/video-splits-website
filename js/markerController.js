@@ -18,6 +18,10 @@ function sort(arr){
     return arr
 }
 
+function roundTo(num) {
+    return Math.round(num * 100) / 100
+}
+
 document.querySelector('#newMarkerButton').addEventListener('click', () => {
     addMarker();
 })
@@ -26,9 +30,9 @@ function updateMarkers() {
     let string = ""
     for (let i = 0; i < markerTimes.length; i++) {
         diff = i > 0 ? markerTimes[i] - markerTimes[i - 1] : markerTimes[0];
-        diff = roundTo(diff, 2)
+        diff = roundTo(diff)
         splitNum = i > 0 ? `Split ${i}` : "Start"
-        string = string.concat(`<div class = \"split\"><b>${splitNum}: ${roundTo(markerTimes[i] - markerTimes[0], 2)} sec</b> (+${diff})</div>`)
+        string = string.concat(`<div class = \"split\"><b>${splitNum}: ${roundTo(markerTimes[i] - markerTimes[0])} sec</b> (+${diff})</div>`)
     }
     dataContainer.innerHTML = string;
 
